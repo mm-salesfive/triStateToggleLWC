@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Tri-State Toggle</masterLabel>
+    <description>SLDS toggle with optional tri-state (null). Can lock to binary after first pick or allow full three-state cycling.</description>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage,lightning__RecordPage,lightning__HomePage">
+            <property name="label" type="String" default="Toggle" label="Label" />
+            <property
+                name="enableTriState"
+                type="Boolean"
+                default="false"
+                label="Enable tri-state"
+                description="Default is unset (center). User picks true or false once, then the control is a normal toggle."
+            />
+            <property
+                name="enableFullTriState"
+                type="Boolean"
+                default="false"
+                label="Enable full tri-state"
+                description="Requires Enable tri-state. Users can return to unset (center) after choosing true or false."
+            />
+            <property
+                name="initialState"
+                type="String"
+                default="unset"
+                label="Initial state"
+                description="Only used when tri-state is enabled. Unset = center (null). True or False start committed."
+                datasource="unset,true,false"
+            />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

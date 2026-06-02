@@ -1,0 +1,114 @@
+:host {
+    display: block;
+    --tri-state-track-width: 3rem;
+    --tri-state-track-height: 1.5rem;
+    --tri-state-thumb-size: 1.125rem;
+    --tri-state-thumb-inset: 0.1875rem;
+    --tri-state-track-bg-off: #747474;
+    --tri-state-track-bg-on: #2e844a;
+}
+
+/* Match org toggle green on parent: c-tri-state-toggle { --tri-state-track-bg-on: #009900; } */
+
+.tri-state-toggle__label {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tri-state-toggle--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.tri-state-toggle__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.tri-state-toggle__track {
+    position: relative;
+    box-sizing: border-box;
+    width: var(--tri-state-track-width);
+    min-width: var(--tri-state-track-width);
+    height: var(--tri-state-track-height);
+    border-radius: 15rem;
+    flex-shrink: 0;
+}
+
+.tri-state-toggle__track--unset,
+.tri-state-toggle__track--false {
+    background-color: var(--tri-state-track-bg-off);
+}
+
+.tri-state-toggle__track--true {
+    background-color: var(--tri-state-track-bg-on);
+}
+
+.tri-state-toggle__thumb {
+    position: absolute;
+    top: 50%;
+    width: var(--tri-state-thumb-size);
+    height: var(--tri-state-thumb-size);
+    margin-top: calc(var(--tri-state-thumb-size) / -2);
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+    transition:
+        left 0.15s ease,
+        right 0.15s ease,
+        margin-left 0.15s ease;
+}
+
+.tri-state-toggle__track--unset .tri-state-toggle__thumb {
+    left: 50%;
+    right: auto;
+    margin-left: calc(var(--tri-state-thumb-size) / -2);
+}
+
+.tri-state-toggle__track--false .tri-state-toggle__thumb {
+    left: var(--tri-state-thumb-inset);
+    right: auto;
+    margin-left: 0;
+}
+
+.tri-state-toggle__track--true .tri-state-toggle__thumb {
+    left: auto;
+    right: var(--tri-state-thumb-inset);
+    margin-left: 0;
+}
+
+.tri-state-toggle__check {
+    position: absolute;
+    left: 0.3125rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.875rem;
+    height: 0.875rem;
+    color: #ffffff;
+    pointer-events: none;
+}
+
+.tri-state-toggle__check-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.tri-state-toggle__label:focus-visible .tri-state-toggle__track {
+    outline: 2px solid var(--slds-g-color-brand-base-50, #0176d3);
+    outline-offset: 2px;
+}

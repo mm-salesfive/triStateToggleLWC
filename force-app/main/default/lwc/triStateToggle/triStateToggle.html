@@ -1,0 +1,49 @@
+<template>
+    <div class="slds-form-element">
+        <div class="slds-form-element__control">
+            <span
+                class={labelClass}
+                role="group"
+                aria-label={label}
+                onclick={handleActivate}
+                onkeydown={handleKeydown}
+                tabindex={labelTabIndex}
+            >
+                <template lwc:if={showLabel}>
+                    <span class="slds-form-element__label slds-m-bottom_none">{label}</span>
+                </template>
+                <input
+                    class="tri-state-toggle__input"
+                    type="checkbox"
+                    data-toggle-input
+                    name={name}
+                    checked={isChecked}
+                    disabled={isDisabled}
+                    aria-checked={ariaChecked}
+                    aria-label={label}
+                    tabindex="-1"
+                />
+                <span class={trackClass} data-tri-state-track role="presentation">
+                    <template lwc:if={showCheckmark}>
+                        <span class="tri-state-toggle__check" aria-hidden="true">
+                            <svg
+                                class="tri-state-toggle__check-icon"
+                                viewBox="0 0 52 52"
+                                focusable="false"
+                            >
+                                <path
+                                    d="M14.1 27.2l7.1 7.2 16.7-16.8"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="6"
+                                ></path>
+                            </svg>
+                        </span>
+                    </template>
+                    <span class="tri-state-toggle__thumb"></span>
+                    <span class="slds-assistive-text">{activeMessage}</span>
+                </span>
+            </span>
+        </div>
+    </div>
+</template>
